@@ -11,6 +11,12 @@ export class botaoComponente{
     @Input()
     conteudo: string
     
+    @Input()
+    largura: string
+
+    @Input()
+    altura: string
+
     @Output()
     clickBotao = new EventEmitter()
 
@@ -24,7 +30,7 @@ export class botaoComponente{
 
         console.log("deletar " + this.deletar(visor.value))
 
-        if(conteudo!='=' && conteudo!='del'){
+        if(conteudo!='=' && conteudo!='del' && conteudo != "C"){
 
             if(ultimoDigito!='+' && ultimoDigito!='-' && ultimoDigito!='*' && ultimoDigito!='/'){//se nao for operador coloca no visor
 
@@ -43,6 +49,8 @@ export class botaoComponente{
             visor.value = eval(visor.value)
         }else if(conteudo=='del'){
             visor.value = this.deletar(visor.value)
+        }else if(conteudo == 'C'){
+            visor.value = ""
         }
         
         console.log('ultimo dig ' + ultimoDigito)
